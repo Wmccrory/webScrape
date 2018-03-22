@@ -4,9 +4,19 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 var db = require(".././models");
 
+//homepage
 router.get("/", function(req, res) {
 	console.log("Homepage");
-	res.render("index");
+	db.Article.find({}).sort({_id: -1}).limit(20)
+		.then(function(dbArticle) {
+			
+			var articles = {
+				article: dbArticle
+			};
+
+			console.log(articles);
+			res.render("index",articles);
+		})
 })
 
 router.get("/scrape", function(req, res) {
@@ -44,16 +54,16 @@ router.get("/scrape", function(req, res) {
 
 // Route for getting all Articles from the db
 router.get("/articles", function(req, res) {
-	// Grab every document in the Articles collection
-	db.Article.find({})
+	db.Article.find({}).sort({_id: -1})
 		.then(function(dbArticle) {
-			// If we were able to successfully find Articles, send them back to the client
-			res.json(dbArticle);
+			
+			var articles = {
+				article: dbArticle
+			};
+
+			console.log(articles);
+			res.render("index",articles);
 		})
-		.catch(function(err) {
-			// If an error occurred, send it to the client
-			res.json(err);
-		});
 });
 
 // Route for grabbing a specific Article by id, populate it with it's note

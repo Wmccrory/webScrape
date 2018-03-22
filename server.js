@@ -17,6 +17,7 @@ var app = express();
 app.use(logger("dev"));
 // Use body-parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'))
 
 
 // By default mongoose uses callbacks for async queries, we're setting it to use promises (.then syntax) instead
