@@ -41,6 +41,6 @@ app.use(routes);
 
 
 // Start the server
-app.listenlisten(process.env.PORT || 8080, function() {
+app.listen(process.env.PORT || 8080, function() {
 	console.log("App running on port " + PORT + "!");
 });
