@@ -66,3 +66,13 @@ textarea {
 	width: 80%;
 	height: 10em;
 }
+
+footer {
+	overflow: hidden;
+	padding: 0.5em;
+	margin-top: 2%;
+	background: #f9f9f9;
+	border-top: solid 1px #000;
+	display: flex;
+	justify-content: space-between;
+}
